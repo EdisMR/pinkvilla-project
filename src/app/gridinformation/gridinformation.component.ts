@@ -11,18 +11,15 @@ import { ApiInformationService } from '../api-information.service';
     trigger('itemsChanging', [
       // ...
       state('hidden', style({
-        opacity: 0.05,
-        transform:"scale(0.5)"
+        opacity: 0.3,
+        transform: 'rotateY(90deg)'
       })),
       state('showed', style({
         opacity: 1,
-        transform:"scale(1)"
+        transform: 'rotateY(0deg)'
       })),
-      transition('hidden => showed', [
+      transition('* => *', [
         animate('.5s')
-      ]),
-      transition('showed => hidden', [
-        animate('0.1s')
       ]),
     ]),
   ]
