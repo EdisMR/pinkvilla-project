@@ -12,15 +12,17 @@ import { ApiInformationService } from '../api-information.service';
       // ...
       state('hidden', style({
         opacity: 0.05,
+        transform:"scale(0.5)"
       })),
       state('showed', style({
         opacity: 1,
+        transform:"scale(1)"
       })),
       transition('hidden => showed', [
-        animate('1s')
+        animate('.5s')
       ]),
-      transition('closed => open', [
-        animate('0.5s')
+      transition('showed => hidden', [
+        animate('0.1s')
       ]),
     ]),
   ]
@@ -61,13 +63,13 @@ export class GridinformationComponent implements OnInit {
   }
 
   getItems():void{
+    this.document.documentElement.scrollTop=0
     this.subscriptionSvc=this._apiSvc.getInformation()
     .subscribe((e) => {
       this._apiSvc.results = e;
       this.data = this._apiSvc.results.nodes;
       this.isChanging=false
     })
-    this.document.documentElement.scrollTop=0
   }
 
   subscriptionSvc!:Subscription;
