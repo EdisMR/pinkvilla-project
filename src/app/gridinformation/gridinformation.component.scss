@@ -68,15 +68,15 @@ header{
 
 }
 
-#getMore{
+.buttons-container{
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 10px 20px;
+  button{
   font-size: 15px;
-
+  padding: 10px 20px;
+  }
 }
-
 
 @media (max-width:700px) {
   .grid-container{

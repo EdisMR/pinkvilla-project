@@ -7,8 +7,10 @@ export class ApiInformationService {
 
   apiDirection:string="https://www.pinkvilla.com/photo-gallery-feed-page/page/"
 
+  /* Number of items */
   page=1;
 
+  /* Keep received data */
   results!:any;
 
   getInformation(){

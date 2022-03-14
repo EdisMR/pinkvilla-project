@@ -18,9 +18,14 @@
     </div>
 </div>
 
-<button id="getMore" (click)="getMore()" [disabled]="buttonFunctionality">
-  Get More
-</button>
+<div class="buttons-container">
+  <button id="getLast" (click)="getBack()" [disabled]="buttonFunctionality">
+    Get Last Items
+  </button>
+  <button id="getMore" (click)="getMore()" [disabled]="buttonFunctionality">
+    Get More
+  </button>
+</div>
 
 
 <footer>

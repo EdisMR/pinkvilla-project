@@ -35,6 +35,7 @@ export class GridinformationComponent implements OnInit {
     console.log(this.document.documentElement.scrollHeight);
     console.log(this.document.documentElement.scrollTop); */
 
+    /* If scroll to bottom, show Button */
     if (
       window.pageYOffset >
       this.document.documentElement.scrollHeight - window.screen.height
@@ -44,12 +45,18 @@ export class GridinformationComponent implements OnInit {
         this.buttonFunctionality=true
     }
   }
+
+  /* Keep the information */
   data!: any;
 
+  /* If true, click to show more items */
   buttonFunctionality=true;
 
+  /* Manage Animation */
   isChanging=false;
 
+
+  /* More Items */
   getMore(): void {
     this.isChanging=true
     this._apiSvc.page++;
@@ -57,6 +64,17 @@ export class GridinformationComponent implements OnInit {
     this.getItems()
   }
 
+  /* Last Items */
+  getBack():void{
+    if(this._apiSvc.page>0){
+      this.isChanging=true
+      this._apiSvc.page--;
+      this.subscriptionSvc.unsubscribe()
+      this.getItems()
+    }
+  }
+
+  /* Get image URL */
   returnImageDir(elm: string) {
     let result = 'https://www.pinkvilla.com' + elm;
     return result;
@@ -75,6 +93,7 @@ export class GridinformationComponent implements OnInit {
   subscriptionSvc!:Subscription;
 
   constructor(
+    /* Get document DOM Information */
     @Inject(DOCUMENT) private document: Document,
     private _apiSvc: ApiInformationService
   ) {}
