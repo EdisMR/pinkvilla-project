@@ -1,0 +1,23 @@
+<header>
+  <h1 id="pageTitle">
+    <span>P</span>INKVILLA
+    <span>P</span>ROJECT
+  </h1>
+</header>
+
+
+<div class="grid-container" *ngIf="data">
+
+    <div class="grid-item" *ngFor="let item of data" [@itemsChanging]="isChanging?'hidden':'showed'">
+      <div class="grid-item-title">
+        {{item.node.title}}
+      </div>
+      <div class="grid-item-image">
+        <img [src]="returnImageDir(item.node.field_photo_image_section)" alt="">
+      </div>
+    </div>
+</div>
+
+<button id="getMore" (click)="getMore()" [disabled]="buttonFunctionality">
+  Get More
+</button>
