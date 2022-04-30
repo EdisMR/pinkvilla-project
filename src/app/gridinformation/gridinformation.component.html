@@ -6,30 +6,25 @@
 </header>
 
 
-<div class="grid-container" *ngIf="data">
-
-    <div class="grid-item" *ngFor="let item of data" [@itemsChanging]="isChanging?'hidden':'showed'">
-      <div class="grid-item-title">
-        {{item.node.title}}
-      </div>
-      <div class="grid-item-image">
-        <img [src]="returnImageDir(item.node.field_photo_image_section)" alt="">
-      </div>
-    </div>
-</div>
-
-<div class="buttons-container">
-  <button id="getLast" (click)="getBack()" [disabled]="buttonFunctionality">
-    Get Last Items
-  </button>
-  <button id="getMore" (click)="getMore()" [disabled]="buttonFunctionality">
-    Get More
-  </button>
-</div>
-
-
-<footer>
+<section id="created-by">
   <div>
     Created by <a href="https://www.linkedin.com/in/edismr/">Edis Mercado</a>
   </div>
-</footer>
+</section>
+
+
+<div class="grid-container" *ngIf="data">
+
+  <div class="grid-item" *ngFor="let item of data()">
+    <div class="grid-item-title">
+      {{item.node.title}}
+    </div>
+    <div class="grid-item-image">
+      <img [src]="returnImageDir(item.node.field_photo_image_section)" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="loadingMore-text">
+  <span #loading>Loading more...</span>
+</div>
