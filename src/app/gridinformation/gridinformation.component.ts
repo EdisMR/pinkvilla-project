@@ -67,19 +67,17 @@ export class GridinformationComponent implements OnInit, AfterViewInit {
     this.observer = new IntersectionObserver((entries)=>{
       entries.forEach(entry => {
         if(entry.isIntersecting){
-          this.getMore()
+          /* timer 2 seconds */
+          setTimeout(()=>{
+            this.getMore()
+          },2000)
         }
       })
     }, options);
   }
 
   ngAfterViewInit() {
-    /* timer */
-    setTimeout(() => {
-      this.loading.forEach(elm => {
-        this.observer.observe(elm.nativeElement)
-      })
-    }, 3000);
+      this.observer.observe(this.loading.first.nativeElement)
   }
 
 
@@ -95,6 +93,5 @@ export class GridinformationComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.getItems()
   }
 }
